@@ -1,20 +1,21 @@
-﻿using System;
+﻿using GraphQL.Types;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BachelorDegreeProject.Types;
-using GraphQL.Types;
 
-namespace BachelorDegreeProject.Models.GraphQL
+
+namespace BachelorDegreeProject.Types
 {
-    public class TestType : ObjectGraphType<test>
+    public class PersonType : ObjectGraphType<Models.Person>
     {
-        public TestType()
+        public PersonType()
         {
-            Name = "Test";
-
+            Name = "Person";
             Field(x => x.id, type: typeof(IdGraphType)).Description("The test ID.");
             Field(x => x.name).Description("test name");
+            Field(x => x.age, type: typeof(IntGraphType));
+
         }
     }
 }
