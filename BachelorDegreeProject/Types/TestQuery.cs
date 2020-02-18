@@ -9,12 +9,6 @@ namespace BachelorDegreeProject.Types
 {
     public class TestQuery : ObjectGraphType
     {
-        private List<Models.test> tests = new List<Models.test>
-            {
-                new Models.test { id = "123", name = "test1", persons = { new Models.Person() {id = "1",age = 13, name = "kalle" }, new Models.Person() { id = "4", age = 40, name = "Rolf" } } },
-                new Models.test { id = "1234", name = "test2", persons = { new Models.Person() {id = "2",age = 10, name = "klas" } } },
-                new Models.test { id = "12345", name = "test2", persons = { new Models.Person() {id = "3",age = 20, name = "johan" }} },
-            };
         public TestQuery()
         {
 
@@ -26,7 +20,7 @@ namespace BachelorDegreeProject.Types
                 resolve: context =>
                 {
                     var id = context.GetArgument<string>("id");
-                    var t = tests.FirstOrDefault(i => i.id == id);
+                    var t = BachelorProjectBackend.Repository.test.test1().FirstOrDefault(x => x.id == id);
                     return t;
                 }
                 );
@@ -34,7 +28,7 @@ namespace BachelorDegreeProject.Types
                     Models.test.testList,
                     resolve: context =>
                     {
-                        return tests;
+                        return BachelorProjectBackend.Repository.test.test1();
                     }
                );
             //Field<TestType>(

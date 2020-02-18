@@ -7,7 +7,7 @@ using GraphQL.Types;
 
 namespace BachelorDegreeProject.Models.GraphQL
 {
-    public class TestType : ObjectGraphType<test>
+    public class TestType : ObjectGraphType<BachelorProjectBackend.Models.test>
     {
         public TestType()
         {
