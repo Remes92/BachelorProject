@@ -13,8 +13,9 @@ namespace BachelorDegreeProject.Models.GraphQL
         {
             Name = "Test";
 
-            Field(x => x.id, type: typeof(IdGraphType)).Description("The test ID.");
+            Field(x => x.id!, type: typeof(IdGraphType)).Description("The test ID.");
             Field(x => x.name).Description("test name");
+            Field<ListGraphType<PersonType>>("persons");
         }
     }
 }

@@ -26,7 +26,7 @@ namespace BachelorDegreeProject.Controllers
                 _.Query = query.Query;
                 _.OperationName = query.OperationName;
                 _.Inputs = inputs;
-            }).ConfigureAwait(false);
+            });
 
             if(result.Errors?.Count > 0)
             {

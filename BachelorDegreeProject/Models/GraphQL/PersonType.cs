@@ -11,9 +11,9 @@ namespace BachelorDegreeProject.Types
     {
         public PersonType()
         {
-            Name = "Person";
+            Name = "person";
             Field(x => x.id, type: typeof(IdGraphType)).Description("The test ID.");
-            Field(x => x.name).Description("test name");
+            Field(x => x.name, type: typeof(StringGraphType)).Description("test name");
             Field(x => x.age, type: typeof(IntGraphType));
 
         }
