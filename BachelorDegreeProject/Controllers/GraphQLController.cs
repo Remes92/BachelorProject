@@ -11,10 +11,9 @@ namespace BachelorDegreeProject.Controllers
     public class GraphQLController : Controller
     {
         [HttpPost]
-        //public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
         public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
         {
-           // var inputs = query.Variables.ToInputs();
+            var inputs = query.Variables.ToInputs();
 
             var schema = new Schema()
             {
@@ -24,9 +23,9 @@ namespace BachelorDegreeProject.Controllers
             var result = await new DocumentExecuter().ExecuteAsync(_ =>
             {
                 _.Schema = schema;
-              //  _.Query = query.Query;
-               // _.OperationName = query.OperationName;
-               // _.Inputs = inputs;
+                _.Query = query.Query;
+                _.OperationName = query.OperationName;
+                _.Inputs = inputs;
             }).ConfigureAwait(false);
 
             if(result.Errors?.Count > 0)
@@ -34,7 +33,7 @@ namespace BachelorDegreeProject.Controllers
                 return BadRequest();
             }
 
-            return Ok(result);
+            return Ok(result.Data);
         }
     }
 }

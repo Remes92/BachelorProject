@@ -19,9 +19,10 @@ namespace BachelorDegreeProject.Types
         {
 
             Field<TestType>(
-                "test",
+                Models.test.graphqlmodel,
                 arguments: new QueryArguments(
-                    new QueryArgument<IdGraphType> { Name = "id", Description = "The ID of test"}
+                    new QueryArgument<IdGraphType> { Name = "id", Description = "The ID of test"},
+                    new QueryArgument<IdGraphType> { Name = "name", Description = "The NAME of test" }
                 ),
                 resolve: context =>
                 {
@@ -29,7 +30,7 @@ namespace BachelorDegreeProject.Types
                     var t = tests.FirstOrDefault(i => i.id == id);
                     return t;
                 }
-                );
+                );;
 
                 Field<ListGraphType<TestType>>(
                     "tests",

@@ -7,11 +7,7 @@ namespace BachelorDegreeProject.Models
 {
     public class test
     {
-        public test()
-        {
-            id = "123";
-            name = "test";
-        }
+        public const string graphqlmodel = "test";
         public string id { get; set; }
         public string name { get; set; }
     }
