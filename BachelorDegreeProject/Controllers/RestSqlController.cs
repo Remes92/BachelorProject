@@ -9,15 +9,16 @@ namespace BachelorDegreeProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RestController : ControllerBase
+    public class RestSqlController : ControllerBase
     {
         [Route("testcase1")]
         [HttpGet]
-        public IActionResult testCase1() {
+        public IActionResult testCase1(int id) {
+            var test = BachelorProjectBackend.Repository.test.test1();
 
-
-            return Ok();
+            return Ok(test);
         }
+
         [HttpGet]
         [Route("testcase2")]
         public IActionResult testCase2()
@@ -26,6 +27,7 @@ namespace BachelorDegreeProject.Controllers
 
             return Ok();
         }
+
         [HttpGet]
         [Route("testcase3")]
         public IActionResult testCase3()
@@ -34,6 +36,7 @@ namespace BachelorDegreeProject.Controllers
 
             return Ok();
         }
+
         [HttpGet]
         [Route("testcase4")]
         public IActionResult testCase4()
@@ -42,6 +45,7 @@ namespace BachelorDegreeProject.Controllers
 
             return Ok();
         }
+
         [HttpGet]
         [Route("testcase5")]
         public IActionResult testCase5()
@@ -50,6 +54,7 @@ namespace BachelorDegreeProject.Controllers
 
             return Ok();
         }
+
         [HttpGet]
         [Route("testcase6")]
         public IActionResult testCase6()
@@ -58,6 +63,7 @@ namespace BachelorDegreeProject.Controllers
 
             return Ok();
         }
+
         [HttpGet]
         [Route("testcase7")]
         public IActionResult testCase7()
@@ -66,6 +72,7 @@ namespace BachelorDegreeProject.Controllers
 
             return Ok();
         }
+
         [HttpGet]
         [Route("testcase8")]
         public IActionResult testCase8()
@@ -74,6 +81,7 @@ namespace BachelorDegreeProject.Controllers
 
             return Ok();
         }
+
         [HttpGet]
         [Route("testcase9")]
         public IActionResult testCase9()
@@ -82,9 +90,19 @@ namespace BachelorDegreeProject.Controllers
 
             return Ok();
         }
+
         [HttpGet]
         [Route("testcase10")]
         public IActionResult testCase10()
+        {
+
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("testcase10_2")]
+        public IActionResult testCase10_2()
         {
 
 
