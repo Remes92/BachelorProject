@@ -13,7 +13,7 @@ namespace BachelorDegreeProject.Controllers
     {
         [Route("testcase1")]
         [HttpGet]
-        public IActionResult testCase1(int id) {
+        public IActionResult testCase1() {
             var test = BachelorProjectBackend.Repository.test.test1();
 
             return Ok(test);
