@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 20 feb 2020 kl 14:39
+-- Tid vid skapande: 24 feb 2020 kl 09:44
 -- Serverversion: 10.1.38-MariaDB
 -- PHP-version: 7.3.3
 
@@ -46,7 +46,7 @@ CREATE TABLE `company` (
 
 CREATE TABLE `department` (
   `DepartmentId` int(11) NOT NULL,
-  `CompanyId` int(11) NOT NULL,
+  `CompanyId` int(11) NOT NULL COMMENT 'relation',
   `Department_Description` text NOT NULL,
   `Department_Key` varchar(50) NOT NULL,
   `Department_Label` varchar(50) NOT NULL,
@@ -73,12 +73,12 @@ CREATE TABLE `person` (
   `Person_Description` text NOT NULL,
   `Person_Gender` varchar(50) NOT NULL,
   `Person_LastName` varchar(50) NOT NULL,
-  `LookupItem_CountryId` varchar(32) NOT NULL COMMENT 'guid',
+  `LookupItem_CountryId` varchar(36) NOT NULL COMMENT 'guid',
   `Person_FullName` varchar(50) NOT NULL,
   `Person_Phone` varchar(50) NOT NULL,
   `Person_FavoritePizza` varchar(50) NOT NULL,
   `Person_CustomFields` varchar(50) NOT NULL,
-  `DefaultCompanyId` varchar(32) NOT NULL COMMENT 'guid',
+  `DefaultCompanyId` varchar(36) NOT NULL COMMENT 'guid',
   `Person_FavoritePasta` varchar(50) NOT NULL,
   `Person_Division` varchar(50) NOT NULL,
   `Person_Email` varchar(50) NOT NULL,
@@ -86,14 +86,14 @@ CREATE TABLE `person` (
   `Person_Reference` varchar(50) NOT NULL,
   `Person_FaxNumber` varchar(50) NOT NULL,
   `Person_FirstName2` varchar(50) NOT NULL,
-  `StoneBricksID` varchar(32) NOT NULL COMMENT 'guid',
+  `StoneBricksID` varchar(36) NOT NULL COMMENT 'guid',
   `Person_Group` varchar(50) NOT NULL,
   `Person_GroupCode` varchar(50) NOT NULL,
   `Person_HasData` tinyint(1) NOT NULL,
   `Person_String` varchar(50) NOT NULL,
   `Person_FavoriteInstrument` varchar(50) NOT NULL,
-  `myAccountId1` varchar(32) NOT NULL COMMENT 'guid',
-  `myAccountId2` varchar(32) NOT NULL COMMENT 'guid',
+  `myAccountId1` varchar(36) NOT NULL COMMENT 'guid',
+  `myAccountId2` varchar(36) NOT NULL COMMENT 'guid',
   `Person_InternalCode` varchar(50) NOT NULL,
   `Person_HasParty` tinyint(1) NOT NULL,
   `Person_IsCompany` tinyint(1) NOT NULL,
@@ -120,7 +120,7 @@ CREATE TABLE `person` (
   `Person_PostageAddressAttention` varchar(50) NOT NULL,
   `Person_PostageAddressCity` varchar(50) NOT NULL,
   `Person_PostageAddressCO` varchar(50) NOT NULL,
-  `PostageAddressCountryId` varchar(32) NOT NULL COMMENT 'guid',
+  `PostageAddressCountryId` varchar(36) NOT NULL COMMENT 'guid',
   `Person_PostageAddressDepartment` varchar(50) NOT NULL,
   `Person_PostageAddressStreet` varchar(50) NOT NULL,
   `Person_PostageAddressZip` varchar(50) NOT NULL,
@@ -134,17 +134,17 @@ CREATE TABLE `person` (
   `Person_PrintStatusTimeStamp` datetime NOT NULL,
   `Person_PrintStatusTimeStampString` varchar(50) NOT NULL,
   `Person_RatingAgency` varchar(50) NOT NULL,
-  `ResellerId` varchar(32) NOT NULL COMMENT 'guid',
+  `ResellerId` varchar(36) NOT NULL COMMENT 'guid',
   `Person_Section` varchar(50) NOT NULL,
   `Person_Sector` varchar(50) NOT NULL,
   `Person_Signing` varchar(50) NOT NULL,
-  `Person_Taxi` varchar(32) NOT NULL COMMENT 'guid',
+  `Person_Taxi` varchar(36) NOT NULL COMMENT 'guid',
   `Person_KnowledgeLevel` varchar(50) NOT NULL,
-  `CountryId2` varchar(32) NOT NULL COMMENT 'guid',
+  `CountryId2` varchar(36) NOT NULL COMMENT 'guid',
   `Person_Id2` varchar(50) NOT NULL,
   `Person_IdType` varchar(50) NOT NULL,
   `Person_ManualHandling` tinyint(1) NOT NULL,
-  `InstanceId` varchar(32) NOT NULL COMMENT 'guid'
+  `InstanceId` varchar(36) NOT NULL COMMENT 'guid'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -157,12 +157,12 @@ CREATE TABLE `product` (
   `ProductId` int(11) NOT NULL,
   `productTypeId` int(11) NOT NULL COMMENT 'relation',
   `CompanyId` int(11) NOT NULL COMMENT 'relation',
-  `ManagerId` varchar(32) NOT NULL COMMENT 'guid',
-  `AdministratorId` varchar(32) NOT NULL COMMENT 'guid',
+  `ManagerId` varchar(36) NOT NULL COMMENT 'guid',
+  `AdministratorId` varchar(36) NOT NULL COMMENT 'guid',
   `Product_Interval` int(11) NOT NULL,
-  `AdjustedId` varchar(32) NOT NULL COMMENT 'guid',
+  `AdjustedId` varchar(36) NOT NULL COMMENT 'guid',
   `Product_Comment` varchar(50) NOT NULL,
-  `Product_Country` varchar(32) NOT NULL COMMENT 'guid',
+  `Product_Country` varchar(36) NOT NULL COMMENT 'guid',
   `Currency` varchar(50) NOT NULL,
   `Product_Type` varchar(50) NOT NULL,
   `Product_DescriptionString` text NOT NULL,
@@ -172,7 +172,7 @@ CREATE TABLE `product` (
   `Product_Interests` varchar(50) NOT NULL,
   `Product_Category` varchar(50) NOT NULL,
   `Product_CommissionPrice` decimal(10,2) NOT NULL,
-  `Product_SupplierId` varchar(32) NOT NULL COMMENT 'guid',
+  `Product_SupplierId` varchar(36) NOT NULL COMMENT 'guid',
   `Product_Rating` decimal(10,2) NOT NULL,
   `Product_Key` varchar(50) NOT NULL,
   `Product_Max` varchar(50) NOT NULL,
@@ -185,7 +185,7 @@ CREATE TABLE `product` (
   `Product_Version` varchar(50) NOT NULL,
   `Product_Level` decimal(10,2) NOT NULL,
   `Product_ApprovedDate` datetime NOT NULL,
-  `ResellerId` varchar(32) NOT NULL COMMENT 'guid',
+  `ResellerId` varchar(36) NOT NULL COMMENT 'guid',
   `Product_Retention` decimal(10,2) NOT NULL,
   `Product_Rule1` decimal(10,2) NOT NULL,
   `Product_Rule2` decimal(10,2) NOT NULL,
@@ -196,7 +196,7 @@ CREATE TABLE `product` (
   `Product_StatusString` varchar(50) NOT NULL,
   `Product_PhoneNo` varchar(50) NOT NULL,
   `Product_URL` varchar(50) NOT NULL,
-  `ProductType` varchar(32) NOT NULL COMMENT 'guid'
+  `ProductType` varchar(36) NOT NULL COMMENT 'guid'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -228,22 +228,19 @@ ALTER TABLE `company`
 -- Index för tabell `department`
 --
 ALTER TABLE `department`
-  ADD PRIMARY KEY (`DepartmentId`),
-  ADD UNIQUE KEY `DepartmentId` (`DepartmentId`);
+  ADD PRIMARY KEY (`DepartmentId`);
 
 --
 -- Index för tabell `person`
 --
 ALTER TABLE `person`
-  ADD PRIMARY KEY (`PersonId`),
-  ADD UNIQUE KEY `EmployeeId` (`EmployeeId`);
+  ADD PRIMARY KEY (`PersonId`);
 
 --
 -- Index för tabell `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`ProductId`),
-  ADD UNIQUE KEY `CompanyId` (`CompanyId`,`productTypeId`);
+  ADD PRIMARY KEY (`ProductId`);
 
 --
 -- Index för tabell `producttype`
