@@ -9,4 +9,9 @@
     <Folder Include="SqlRepo\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.10.2" />
+    <PackageReference Include="MySql.Data" Version="8.0.19" />
+  </ItemGroup>
+
 </Project>

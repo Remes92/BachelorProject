@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BachelorDegreeProject.Types
 {
-    public class PersonType : ObjectGraphType<BachelorProjectBackend.Models.Person>
+    public class PersonType : ObjectGraphType<Models.Person>
     {
         public PersonType()
         {
