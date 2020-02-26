@@ -7,6 +7,8 @@ namespace BachelorProjectBackend.Models
 {
     public class Person
     {
+        public Person() { }
+
         public const string person = "Person";
         public int PersonId { get; set; }
         public int EmployeeId { get; set; }

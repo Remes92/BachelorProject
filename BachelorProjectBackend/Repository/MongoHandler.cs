@@ -4,16 +4,19 @@ using System.Text;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using BachelorProjectBackend.Models;
+using Newtonsoft.Json;
 
 namespace BachelorProjectBackend.Repository
 {
-    class MongoHandler
+    public class MongoHandler
     {
         public string server { get; set; }
         public string user { get; set; }
         public string database { get; set; }
         public int port { get; set; }
         public string password { get; set; }
+
+        private static MongoClient dbClient = new MongoClient("mongodb://localhost:27017/?readPreference=primary&appname=BachelorProjectBackend&ssl=false");
 
         public MongoHandler()
         {
@@ -36,27 +39,27 @@ namespace BachelorProjectBackend.Repository
 
         private MongoClient Connect()
         {
-            MongoClient dbClient = new MongoClient("mongodb://"+user+":"+password+"@"+server+":"+port+"/"+database);
-
+            MongoClient dbClient = new MongoClient("mongodb://"+user+":"+password+"@"+server+":"+port);          
             return dbClient;
         }
 
         public Person GetPersonById(int id)
         {
-            MongoClient dbClient = Connect();
             try
             {
                 var db = dbClient.GetDatabase(database);
-                //TODO start here, get data from persn by PersonId.
                 var collection = db.GetCollection<BsonDocument>("Person");
+                var filter = Builders<BsonDocument>.Filter.Eq("PersonId", id.ToString());
+                var personDocument = collection.Find(filter).FirstOrDefault();
+                personDocument.RemoveAt(0);
+                Person p = PersonFactory.Create(personDocument);
+                return p;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
                 return null;
             }
-            Person p = PersonFactory.Create();
-            return p;
         }
 
     }
