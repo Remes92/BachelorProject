@@ -13,7 +13,8 @@ namespace BachelorDegreeProject.Controllers
     {
         [Route("testcase1")]
         [HttpGet]
-        public IActionResult testCase1(int id)
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult testCase1()
         {
             var test = BachelorProjectBackend.Repository.test.test1();
 
