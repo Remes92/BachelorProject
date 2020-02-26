@@ -18,7 +18,7 @@ namespace BachelorDegreeProject.Controllers
         {
             var test = BachelorProjectBackend.Repository.test.test1();
 
-            return Ok(test.Take(1));
+            return Ok(test);
         }
 
         [HttpGet]

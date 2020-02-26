@@ -14,12 +14,10 @@ namespace BachelorDegreeProject.Controllers
     {
         [Route("testcase1")]
         [HttpGet]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult testCase1() {
-            //var test = BachelorProjectBackend.Repository.test.test1();
 
-            MySqlHandler sqlhander = new MySqlHandler();
-            var test = sqlhander.getPersonById(1);
-
+            Models.test test = new Models.test() {id = "1", name = "rolf" };
             return Ok(test);
         }
 
@@ -27,7 +25,10 @@ namespace BachelorDegreeProject.Controllers
         [Route("testcase2")]
         public IActionResult testCase2()
         {
+            //var test = BachelorProjectBackend.Repository.test.test1();
 
+            MySqlHandler sqlhander = new MySqlHandler();
+            var test = sqlhander.getPersonById(1);
 
             return Ok();
         }

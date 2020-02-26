@@ -9,6 +9,7 @@ namespace BachelorDegreeProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class GraphQLMongoController : ControllerBase
     {
         [HttpPost]

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BachelorDegreeProject.Controllers
 {
     [Route("api/[controller]")]
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class GraphQLMySqlController : Controller
     {
         [HttpPost]
