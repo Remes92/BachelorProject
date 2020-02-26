@@ -4,17 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using BachelorProjectBackend.Repository;
 
 namespace BachelorDegreeProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RestSqlController : ControllerBase
+    public class RestMySqlController : ControllerBase
     {
         [Route("testcase1")]
         [HttpGet]
         public IActionResult testCase1() {
-            var test = BachelorProjectBackend.Repository.test.test1();
+            //var test = BachelorProjectBackend.Repository.test.test1();
+
+            MySqlHandler sqlhander = new MySqlHandler();
+            var test = sqlhander.getPersonById(1);
 
             return Ok(test);
         }

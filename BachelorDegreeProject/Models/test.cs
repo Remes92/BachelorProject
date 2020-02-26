@@ -12,10 +12,10 @@ namespace BachelorDegreeProject.Models
 
         public test()
         {
-            persons = new List<Person>();
+            persons = new List<BachelorProjectBackend.Models.Person>();
         }
         public string id { get; set; }
         public string name { get; set; }
-        public List<Person> persons { get; set; }
+        public List<BachelorProjectBackend.Models.Person> persons { get; set; }
     }
 }
