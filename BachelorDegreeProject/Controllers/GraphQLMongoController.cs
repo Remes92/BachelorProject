@@ -9,11 +9,13 @@ namespace BachelorDegreeProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class GraphQLMongoController : ControllerBase
     {
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
         {
+            if(query == null) { throw new ArgumentException(nameof(query)); };
             var inputs = query.Variables.ToInputs();
 
             var schema = new Schema()
@@ -21,7 +23,7 @@ namespace BachelorDegreeProject.Controllers
                 Query = new Types.TestQuery() // TODO: byt till mongo backend
             };
 
-            var result = await new DocumentExecuter().ExecuteAsync(_ =>
+            var result = await new DocumentExecuter().ExecuteAsync(_ => 
             {
                 _.Schema = schema;
                 _.Query = query.Query;

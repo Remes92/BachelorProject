@@ -20,7 +20,7 @@ namespace BachelorDegreeProject.Types
                 resolve: context =>
                 {
                     var id = context.GetArgument<string>("id");
-                    var t = BachelorProjectBackend.Repository.test.test1().FirstOrDefault(x => x.id == id);
+                    var t = BachelorProjectBackend.Repository.Test.Test1().FirstOrDefault(x => x.id == id);
                     return t;
                 }
                 );
@@ -28,7 +28,7 @@ namespace BachelorDegreeProject.Types
                     Models.test.testList,
                     resolve: context =>
                     {
-                        return BachelorProjectBackend.Repository.test.test1();
+                        return BachelorProjectBackend.Repository.Test.Test1();
                     }
                );
             //Field<TestType>(

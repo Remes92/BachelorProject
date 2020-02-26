@@ -14,27 +14,30 @@ namespace BachelorDegreeProject.Controllers
     {
         [Route("testcase1")]
         [HttpGet]
-        public IActionResult testCase1() {
-            //var test = BachelorProjectBackend.Repository.test.test1();
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase1() {
 
-            MySqlHandler sqlhander = new MySqlHandler();
-            var test = sqlhander.getPersonById(1);
-
+            Models.test test = new Models.test() {id = "1", name = "rolf" };
             return Ok(test);
         }
 
         [HttpGet]
         [Route("testcase2")]
-        public IActionResult testCase2()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase2()
         {
+            //var test = BachelorProjectBackend.Repository.test.test1();
 
+            MySqlHandler sqlhander = new MySqlHandler();
+            var test = sqlhander.GetPersonById(1);
 
             return Ok();
         }
 
         [HttpGet]
         [Route("testcase3")]
-        public IActionResult testCase3()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase3()
         {
 
 
@@ -43,7 +46,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase4")]
-        public IActionResult testCase4()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase4()
         {
 
 
@@ -52,7 +56,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase5")]
-        public IActionResult testCase5()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase5()
         {
 
 
@@ -61,7 +66,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase6")]
-        public IActionResult testCase6()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase6()
         {
 
 
@@ -70,7 +76,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase7")]
-        public IActionResult testCase7()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase7()
         {
 
 
@@ -79,7 +86,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase8")]
-        public IActionResult testCase8()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase8()
         {
 
 
@@ -88,7 +96,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase9")]
-        public IActionResult testCase9()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase9()
         {
 
 
@@ -97,7 +106,41 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase10")]
-        public IActionResult testCase10()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase10()
+        {
+
+
+            return Ok();
+        }
+
+        [Route("testcase11")]
+        [HttpGet]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase11()
+        {
+
+            Models.test test = new Models.test() { id = "1", name = "rolf" };
+            return Ok(test);
+        }
+
+        [HttpGet]
+        [Route("testcase12")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase12()
+        {
+            //var test = BachelorProjectBackend.Repository.test.test1();
+
+            MySqlHandler sqlhander = new MySqlHandler();
+            var test = sqlhander.GetPersonById(1);
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("testcase13")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase13()
         {
 
 
@@ -105,8 +148,49 @@ namespace BachelorDegreeProject.Controllers
         }
 
         [HttpGet]
-        [Route("testcase10_2")]
-        public IActionResult testCase10_2()
+        [Route("testcase14")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase14()
+        {
+
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("testcase15")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase15()
+        {
+
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("testcase16")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase16()
+        {
+
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("testcase17")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase17()
+        {
+
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("testcase18")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase18()
         {
 
 

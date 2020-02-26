@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace BachelorDegreeProject.Controllers
 {
     [Route("api/[controller]")]
-    public class GraphQLSqlController : Controller
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public class GraphQLMySqlController : Controller
     {
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] GraphQLQuery query)

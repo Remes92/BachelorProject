@@ -13,16 +13,18 @@ namespace BachelorDegreeProject.Controllers
     {
         [Route("testcase1")]
         [HttpGet]
-        public IActionResult testCase1(int id)
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase1()
         {
-            var test = BachelorProjectBackend.Repository.test.test1();
+            var test = BachelorProjectBackend.Repository.Test.Test1();
 
-            return Ok(test.Take(1));
+            return Ok(test);
         }
 
         [HttpGet]
         [Route("testcase2")]
-        public IActionResult testCase2()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase2()
         {
 
 
@@ -31,7 +33,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase3")]
-        public IActionResult testCase3()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase3()
         {
 
 
@@ -40,7 +43,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase4")]
-        public IActionResult testCase4()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase4()
         {
 
 
@@ -49,7 +53,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase5")]
-        public IActionResult testCase5()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase5()
         {
 
 
@@ -58,7 +63,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase6")]
-        public IActionResult testCase6()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase6()
         {
 
 
@@ -67,7 +73,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase7")]
-        public IActionResult testCase7()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase7()
         {
 
 
@@ -76,7 +83,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase8")]
-        public IActionResult testCase8()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase8()
         {
 
 
@@ -85,7 +93,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase9")]
-        public IActionResult testCase9()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase9()
         {
 
 
@@ -94,7 +103,8 @@ namespace BachelorDegreeProject.Controllers
 
         [HttpGet]
         [Route("testcase10")]
-        public IActionResult testCase10()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase10()
         {
 
 
@@ -102,8 +112,72 @@ namespace BachelorDegreeProject.Controllers
         }
 
         [HttpGet]
-        [Route("testcase10_2")]
-        public IActionResult testCase10_2()
+        [Route("testcase11")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase11()
+        {
+
+
+            return Ok();
+        }
+        [HttpGet]
+        [Route("testcase12")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase12()
+        {
+
+
+            return Ok();
+        }
+        [HttpGet]
+        [Route("testcase13")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase13()
+        {
+
+
+            return Ok();
+        }
+        [HttpGet]
+        [Route("testcase14")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase14()
+        {
+
+
+            return Ok();
+        }
+        [HttpGet]
+        [Route("testcase15")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase15()
+        {
+
+
+            return Ok();
+        }
+        [HttpGet]
+        [Route("testcase16")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase16()
+        {
+
+
+            return Ok();
+        }
+        [HttpGet]
+        [Route("testcase17")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase17()
+        {
+
+
+            return Ok();
+        }
+        [HttpGet]
+        [Route("testcase18")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase18()
         {
 
 
