@@ -8,38 +8,38 @@ using MySql.Data.MySqlClient;
 /// </summary>
 public class MySqlHandler
 {
-    public string server { get; set; }
-    public string user { get; set; }
-    public string database { get; set; }
-    public int port { get; set; }
-    public string password { get; set; }
+    public string Server { get; set; }
+    public string User { get; set; }
+    public string Database { get; set; }
+    public int Port { get; set; }
+    public string Password { get; set; }
 
     public MySqlHandler()
 	{
-        server = "127.0.0.1";
-        user = "root";
-        database = "bachelorproject_db";
-        port = 3306;
-        password = "";
+        Server = "127.0.0.1";
+        User = "root";
+        Database = "bachelorproject_db";
+        Port = 3306;
+        Password = "";
 	}
 
     public MySqlHandler(string server, string user, string database, int port, string password)
     {
-        this.server = server;
-        this.user = user;
-        this.database = database;
-        this.port = port;
-        this.password = password;
+        this.Server = server;
+        this.User = user;
+        this.Database = database;
+        this.Port = port;
+        this.Password = password;
 
     }
 
     private MySqlConnection Connect()
     {
-        String connStr = "server=" + server + ";user=" + user + ";database=" + database + ";port=" + port + ";password=" + password;
+        String connStr = "server=" + Server + ";user=" + User + ";database=" + Database + ";port=" + Port + ";password=" + Password;
         return new MySqlConnection(connStr);
     }
 
-    public Person getPersonById(int id)
+    public Person GetPersonById(int id)
     {
        MySqlConnection conn = Connect();
         try

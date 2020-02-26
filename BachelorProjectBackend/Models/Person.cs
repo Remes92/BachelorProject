@@ -40,8 +40,8 @@ namespace BachelorProjectBackend.Models
         public Boolean Person_HasData { get; set; }
         public string Person_String { get; set; }
         public string Person_FavoriteInstrument { get; set; }
-        public string myAccountId1 { get; set; }
-        public string myAccountId2 { get; set; }
+        public string MyAccountId1 { get; set; }
+        public string MyAccountId2 { get; set; }
         public string Person_InternalCode { get; set; }
         public Boolean Person_HasParty { get; set; }
         public Boolean Person_IsCompany { get; set; }

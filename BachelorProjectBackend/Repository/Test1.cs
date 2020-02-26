@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace BachelorProjectBackend.Repository
 {
-    public class test
+    public class Test
     {
-        public static List<Models.test> test1() {
+        public static List<Models.test> Test1() {
 
              List<Models.test> tests = new List<Models.test> {
                 new Models.test { id = "123", name = "test1"},

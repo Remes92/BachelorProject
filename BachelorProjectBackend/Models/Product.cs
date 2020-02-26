@@ -8,7 +8,7 @@ namespace BachelorProjectBackend.Models
     public class Product
     {
         public int ProductId { get; set; }
-        public int productTypeId { get; set; }
+        public int ProductTypeId { get; set; }
         public int CompanyId { get; set; }
         public string ManagerId { get; set; }
         public string AdministratorId { get; set; }
