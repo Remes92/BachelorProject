@@ -50,9 +50,9 @@ namespace BachelorProjectBackend.Repository
                 var db = dbClient.GetDatabase(database);
                 var collection = db.GetCollection<BsonDocument>("Person");
                 var filter = Builders<BsonDocument>.Filter.Eq("PersonId", id.ToString());
-                var personDocument = collection.Find(filter).FirstOrDefault();
-                Person p = PersonFactory.Create(personDocument);
-                return p;
+                var document = collection.Find(filter).FirstOrDefault();
+                Person person = PersonFactory.Create(document);
+                return person;
             }
             catch (Exception e)
             {
@@ -61,5 +61,76 @@ namespace BachelorProjectBackend.Repository
             }
         }
 
+        public Product GetProductById(int id)
+        {
+            try
+            {
+                var db = dbClient.GetDatabase(database);
+                var collection = db.GetCollection<BsonDocument>("Product");
+                var filter = Builders<BsonDocument>.Filter.Eq("ProductId", id.ToString());
+                var document = collection.Find(filter).FirstOrDefault();
+                Product product = ProductFactory.Create(document);
+                return product;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+        }
+
+        public ProductType GetProductTypeById(int id)
+        {
+            try
+            {
+                var db = dbClient.GetDatabase(database);
+                var collection = db.GetCollection<BsonDocument>("ProductType");
+                var filter = Builders<BsonDocument>.Filter.Eq("ProductTypeId", id.ToString());
+                var document = collection.Find(filter).FirstOrDefault();
+                ProductType productType = ProductTypeFactory.Create(document);
+                return productType;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+        }
+
+        public Company GetCompanyById(int id)
+        {
+            try
+            {
+                var db = dbClient.GetDatabase(database);
+                var collection = db.GetCollection<BsonDocument>("Company");
+                var filter = Builders<BsonDocument>.Filter.Eq("CompanyId", id.ToString());
+                var document = collection.Find(filter).FirstOrDefault();
+                Company company = CompanyFactory.Create(document);
+                return company;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+        }
+
+        public Department GetDepartmentById(int id)
+        {
+            try
+            {
+                var db = dbClient.GetDatabase(database);
+                var collection = db.GetCollection<BsonDocument>("Department");
+                var filter = Builders<BsonDocument>.Filter.Eq("DepartmentId", id.ToString());
+                var document = collection.Find(filter).FirstOrDefault();
+                Department department = DepartmentFactory.Create(document);
+                return department;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+        }
     }
 }
