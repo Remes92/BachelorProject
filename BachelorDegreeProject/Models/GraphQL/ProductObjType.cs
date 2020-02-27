@@ -27,7 +27,7 @@ namespace BachelorDegreeProject.Types
             Field(x => x.Product_EndDate, type: typeof(DateTimeGraphType));
             Field(x => x.Product_ExternalReference, type: typeof(StringGraphType));
             Field(x => x.Product_Price, type: typeof(DecimalGraphType));
-            Field(x => x.Product_Price, type: typeof(StringGraphType));
+            Field(x => x.Product_Interests, type: typeof(StringGraphType));
             Field(x => x.Product_Category, type: typeof(StringGraphType));
             Field(x => x.Product_CommissionPrice, type: typeof(DecimalGraphType));
             Field(x => x.Product_SupplierId, type: typeof(StringGraphType));

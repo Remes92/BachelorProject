@@ -11,18 +11,17 @@ namespace BachelorDegreeProject.Types
     {
         public TestQuery()
         {
-
             Field<TestType>(
-                Models.test.testObject,
-                arguments: new QueryArguments(
-                    new QueryArgument<IdGraphType> { Name = "id", Description = "The ID of test" }
-                ),
-                resolve: context =>
-                {
-                    var id = context.GetArgument<string>("id");
-                    var t = BachelorProjectBackend.Repository.Test.Test1().FirstOrDefault(x => x.id == id);
-                    return t;
-                }
+                    Models.test.testObject,
+                    arguments: new QueryArguments(
+                        new QueryArgument<IdGraphType> { Name = "id", Description = "The ID of test" }
+                    ),
+                    resolve: context =>
+                    {
+                        var id = context.GetArgument<string>("id");
+                        var t = BachelorProjectBackend.Repository.Test.Test1().FirstOrDefault(x => x.id == id);
+                        return t;
+                    }
                 );
             Field<ListGraphType<TestType>>(
                     Models.test.testList,
@@ -30,7 +29,16 @@ namespace BachelorDegreeProject.Types
                     {
                         return BachelorProjectBackend.Repository.Test.Test1();
                     }
-               );
+                );
+            Field<ProductObjType>(
+                BachelorProjectBackend.Models.Product.product,
+                resolve: context =>
+                    {
+                        BachelorProjectBackend.Repository.MySqlHandler mySql = new BachelorProjectBackend.Repository.MySqlHandler();
+                        return mySql.GetProductById(1);
+                    }
+                );
+
             //Field<TestType>(
             //        Models.Person.person,
             //        resolve: context =>
