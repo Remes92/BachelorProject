@@ -52,7 +52,7 @@ public static class PersonFactory
             Person_HasParty = (Boolean)row[35],
             Person_IsCompany = (Boolean)row[36],
             Person_IsPhilosopher = (Boolean)row[37],
-            Person_HasCompany = (Boolean)row[38],
+            Person_HasCompany = (Boolean)row[38],   
             Person_IsSupplier = (Boolean)row[39],
             Person_HasIssues = (Boolean)row[40],
             Person_isPerson = (Boolean)row[41],
