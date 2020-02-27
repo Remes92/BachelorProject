@@ -51,7 +51,6 @@ namespace BachelorProjectBackend.Repository
                 var collection = db.GetCollection<BsonDocument>("Person");
                 var filter = Builders<BsonDocument>.Filter.Eq("PersonId", id.ToString());
                 var personDocument = collection.Find(filter).FirstOrDefault();
-                personDocument.RemoveAt(0);
                 Person p = PersonFactory.Create(personDocument);
                 return p;
             }

@@ -105,6 +105,9 @@ public static class PersonFactory
 
     public static Person Create(BsonDocument row)
     {
+        // Removes the _id 
+        row.RemoveAt(0);
+
         Person person = new Person()
         {
             PersonId = Int32.Parse(row.GetElement(0).Value.ToString()),
