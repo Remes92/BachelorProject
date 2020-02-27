@@ -6,6 +6,7 @@ namespace BachelorProjectBackend.Models
 {
     public class ProductType
     {
+        public const string productType = "ProductType";
         public int ProductTypeId { get; set; }
         public string ProductType_DescriptionString { get; set; }
         public string ProductType_KeySellingPoint { get; set; }

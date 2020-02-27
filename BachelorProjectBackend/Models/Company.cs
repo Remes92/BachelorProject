@@ -6,6 +6,7 @@ namespace BachelorProjectBackend.Models
 {
     public class Company
     {
+        public const string company = "Company";
         public int CompanyId { get; set; }
         public string Company_Name { get; set; }
         public bool Company_DirectionIn { get; set; }

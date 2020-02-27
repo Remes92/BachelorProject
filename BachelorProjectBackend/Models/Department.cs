@@ -6,6 +6,7 @@ namespace BachelorProjectBackend.Models
 {
     public class Department
     {
+        public const string department = "Department";
         public int DepartmentId { get; set; }
         public int CompanyId { get; set; }
         public string Department_Description { get; set; }
