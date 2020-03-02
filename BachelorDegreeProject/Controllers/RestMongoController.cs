@@ -16,9 +16,9 @@ namespace BachelorDegreeProject.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult TestCase1()
         {
-            var test = BachelorProjectBackend.Repository.Test.Test1();
+           // var test = BachelorProjectBackend.Repository.Test.Test1();
 
-            return Ok(test);
+            return Ok();
         }
 
         [HttpGet]

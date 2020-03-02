@@ -8,9 +8,9 @@ using BachelorProjectBackend.Models;
 
 namespace BachelorDegreeProject.Types
 {
-    public class PersonType : ObjectGraphType<Person>
+    public class PersonObjType : ObjectGraphType<Person>
     {
-        public PersonType()
+        public PersonObjType()
         {
             Name = Person.person;
             Field(x => x.PersonId, type: typeof(IdGraphType));

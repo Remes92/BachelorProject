@@ -17,8 +17,8 @@ namespace BachelorDegreeProject.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult TestCase1() {
 
-            Models.test test = new Models.test() {id = "1", name = "rolf" };
-            return Ok(test);
+            //Models.test test = new Models.test() {id = "1", name = "rolf" };
+            return Ok();
         }
 
         [HttpGet]
@@ -120,8 +120,8 @@ namespace BachelorDegreeProject.Controllers
         public IActionResult TestCase11()
         {
 
-            Models.test test = new Models.test() { id = "1", name = "rolf" };
-            return Ok(test);
+            //Models.test test = new Models.test() { id = "1", name = "rolf" };
+            return Ok();
         }
 
         [HttpGet]
