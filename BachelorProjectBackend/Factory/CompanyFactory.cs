@@ -34,8 +34,8 @@ public static class CompanyFactory
         {
             CompanyId = Int32.Parse(row.GetElement(0).Value.ToString()),
             Company_Name = row.GetElement(1).Value.ToString(),
-            Company_DirectionIn = Convert.ToBoolean(row.GetElement(2).Value.ToString()),
-            Company_DirectionOut = Convert.ToBoolean(row.GetElement(3).Value.ToString()),
+            Company_DirectionIn = Convert.ToBoolean(Int32.Parse(row.GetElement(2).Value.ToString())),
+            Company_DirectionOut = Convert.ToBoolean(Int32.Parse(row.GetElement(3).Value.ToString())),
             Company_Phone = row.GetElement(4).Value.ToString(),
             Company_Label = row.GetElement(5).Value.ToString(),
             Company_Slogan = row.GetElement(6).Value.ToString()

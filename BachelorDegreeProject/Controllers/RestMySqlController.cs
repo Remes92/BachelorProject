@@ -18,7 +18,7 @@ namespace BachelorDegreeProject.Controllers
         public IActionResult TestCase1() {
 
             //Models.test test = new Models.test() {id = "1", name = "rolf" };
-            return Ok();
+            return Ok("Hej");
         }
 
         [HttpGet]
@@ -31,7 +31,7 @@ namespace BachelorDegreeProject.Controllers
             MySqlHandler sqlhander = new MySqlHandler();
             var test = sqlhander.GetPersonById(1);
 
-            return Ok();
+            return Ok(test);
         }
 
         [HttpGet]

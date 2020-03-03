@@ -23,7 +23,7 @@ namespace BachelorProjectBackend.Repository
             User = "root";
             Database = "bachelorproject_db";
             Port = 3306;
-            Password = "";
+            Password = "1234";
         }
 
         public MySqlHandler(string server, string user, string database, int port, string password)
@@ -161,5 +161,7 @@ namespace BachelorProjectBackend.Repository
                 conn.Close();
             }
         }
+
+        
     }
 }

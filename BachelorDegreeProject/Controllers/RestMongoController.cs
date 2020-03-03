@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BachelorProjectBackend.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,8 +28,9 @@ namespace BachelorDegreeProject.Controllers
         public IActionResult TestCase2()
         {
 
-
-            return Ok();
+            MongoHandler sqlhander = new MongoHandler();
+            var test = sqlhander.GetCompanyById(1);
+            return Ok(test);
         }
 
         [HttpGet]
