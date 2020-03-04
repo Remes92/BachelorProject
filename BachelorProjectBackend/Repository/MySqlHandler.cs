@@ -148,6 +148,12 @@ namespace BachelorProjectBackend.Repository
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
 
+                /*
+                 Create company(rdr[0 - 45])
+                 Create Product(rdr,45);
+                  row[bound+1)
+                 */
+
                 Department department = DepartmentFactory.Create(rdr);
                 return department;
             }
@@ -161,7 +167,34 @@ namespace BachelorProjectBackend.Repository
                 conn.Close();
             }
         }
+        public Product GetProductById(int lower, int upper)
+        {
+            MySqlConnection conn = Connect();
+            try
+            {
+                conn.Open();
+                string sql = "SELECT * "+ 
+                             "FROM bachelorproject_db.product " +
+                             "WHERE product.ProductId BETWEEN " + lower + " AND " + upper;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Product product = ProductFactory.Create(rdr);
+                return product;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
 
-        
+        public Product GetProductJoinProductTypeById(int lower, int upper)
+        {
+            return null;
+        }
     }
 }
