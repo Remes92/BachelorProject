@@ -138,6 +138,30 @@ public static class ProductFactory
             ProductType = row.GetElement(startValue + 42).Value.ToString(),
         };
 
+        int currCursor = 43;
+
+        while (currCursor < row.ElementCount)
+        {
+            switch (row.GetElement(currCursor).Name)
+            {
+                case "CompanyId":
+                    // Add company column count to cursor
+                    Company company = CompanyFactory.Create(row, currCursor);
+                    currCursor += 7;
+                    product.companyObject = company;
+                    break;
+                case "ProductTypeId":
+                    // add productType column count to cursor
+                    ProductType typ = ProductTypeFactory.Create(row, currCursor);
+                    currCursor += 6;
+                    product.productTypeObject = typ;
+                    break;
+                default:
+                    currCursor = row.ElementCount;
+                    break;
+            }
+        }
+
         return product;
     }
 }
