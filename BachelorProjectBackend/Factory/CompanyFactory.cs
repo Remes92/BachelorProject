@@ -24,7 +24,7 @@ public static class CompanyFactory
         return company;
     }
 
-    public static Company Create(BsonDocument row, int startValue)
+    public static Company Create(BsonDocument row, int startValue = 0)
     {
         // Removes the _id 
         row.RemoveAt(0);

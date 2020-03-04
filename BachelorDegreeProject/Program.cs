@@ -23,7 +23,7 @@ namespace BachelorDegreeProject
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseIIS()
-                    .UseKestrel()
+                    //.UseKestrel()
                     .UseStartup<Startup>();
                 });   
      }

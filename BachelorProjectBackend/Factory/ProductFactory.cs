@@ -67,15 +67,15 @@ public static class ProductFactory
             {
                 case "CompanyId":
                     // Add company column count to cursor
-                    currCursor += 7;
                     Company company = CompanyFactory.Create(row, currCursor);
-                    product.company = company;
+                    currCursor += 7;
+                    product.companyObject = company;
                     break;
                 case "ProductTypeId":
                     // add productType column count to cursor
-                    currCursor += 6;
                     ProductType typ = ProductTypeFactory.Create(row, currCursor);
-                    product.productType = typ;
+                    currCursor += 6;
+                    product.productTypeObject = typ;
                     break;
                 default:
                     currCursor = row.FieldCount;

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BachelorProjectBackend.Repository;
+using BachelorProjectBackend.Models;
 
 namespace BachelorDegreeProject.Controllers
 {
@@ -37,11 +38,11 @@ namespace BachelorDegreeProject.Controllers
         [HttpGet]
         [Route("testcase3")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase3()
+        public IActionResult TestCase3(int id)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            Product product = sqlhander.GetProductJoinProductTypeAndCompanyById(id);
+            return Ok(product);
         }
 
         [HttpGet]
