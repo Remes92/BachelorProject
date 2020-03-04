@@ -17,20 +17,140 @@ namespace BachelorDegreeProject.Schema
 
             Field<ProductObjType>(
                 Product.product,
+                arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "id"}
+                ),
                 resolve: context =>
                     {
+                        var id = context.GetArgument<int>("id");
                         if (database == Db.Mongo)
                         {
                             BachelorProjectBackend.Repository.MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
-                            return mongo.GetProductById(1);
+                            return mongo.GetProductById(id);
                         }
                         else
                         {
                             BachelorProjectBackend.Repository.MySqlHandler mySql = new BachelorProjectBackend.Repository.MySqlHandler();
-                            return mySql.GetProductById(1);
+                            return mySql.GetProductById(id);
                         }
                     }
                 );
+            Field<ListGraphType<ProductObjType>>(
+                "products",
+                 arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "lower" },
+                    new QueryArgument<IdGraphType> { Name = "upper" }
+                ),
+
+                resolve: context =>
+                {
+                    var lower = context.GetArgument<int>("lower");
+                    var upper = context.GetArgument<int>("upper");
+                    if (database == Db.Mongo)
+                    {
+                        MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
+                                    // return mongo.GetProductById(lower,upper);
+                                    return null;
+                    }
+                    else
+                    {
+                        MySqlHandler mySql = new BachelorProjectBackend.Repository.MySqlHandler();
+                        return mySql.GetProductById(lower, upper);
+                    }
+                });
+
+
+            Field<ProductObjType>(
+                "productAndType",
+                 arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "id" }
+                ),
+                resolve: context =>
+                    {
+                        var id = context.GetArgument<int>("id");
+                        if (database == Db.Mongo)
+                        {
+                            BachelorProjectBackend.Repository.MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
+                            return mongo.GetProductById(id);
+                        }
+                        else
+                        {
+                            BachelorProjectBackend.Repository.MySqlHandler mySql = new BachelorProjectBackend.Repository.MySqlHandler();
+                            return mySql.GetProductJoinProductTypeById(id);
+                        }
+                    }
+                );
+
+            Field<ListGraphType<ProductObjType>>(
+                "productsAndTypes",
+                 arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "lower" },
+                    new QueryArgument<IdGraphType> { Name = "upper" }
+                ),
+
+                resolve: context =>
+                {
+                    var lower = context.GetArgument<int>("lower");
+                    var upper = context.GetArgument<int>("upper");
+                    if (database == Db.Mongo)
+                    {
+                        MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
+                                    // return mongo.GetProductById(lower,upper);
+                                    return null;
+                    }
+                    else
+                    {
+                        MySqlHandler mySql = new BachelorProjectBackend.Repository.MySqlHandler();
+                        return mySql.GetProductJoinProductTypeById(lower, upper);
+                    }
+                });
+
+            Field<ProductObjType>(
+                "productAndTypeAndCompany",
+                 arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "id" }
+                ),
+
+                resolve: context =>
+                {
+                    var id = context.GetArgument<int>("id");
+                    if (database == Db.Mongo)
+                    {
+                        MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
+                        return mongo.GetProductById(id);
+                    }
+                    else
+                    {
+                        MySqlHandler mySql = new BachelorProjectBackend.Repository.MySqlHandler();
+                        return mySql.GetProductJoinProductTypeAndCompanyById(id);
+                    }
+                });
+
+            Field<ListGraphType<ProductObjType>>(
+                "productsAndTypesAndCompanys",
+                 arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "lower" },
+                    new QueryArgument<IdGraphType> { Name = "upper" }
+                ),
+
+                resolve: context =>
+                {
+                    var lower = context.GetArgument<int>("lower");
+                    var upper = context.GetArgument<int>("upper");
+                    if (database == Db.Mongo)
+                    {
+                        MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
+                        // return mongo.GetProductById(lower,upper);
+                        return null;
+                    }
+                    else
+                    {
+                        MySqlHandler mySql = new BachelorProjectBackend.Repository.MySqlHandler();
+                        return mySql.GetProductJoinProductTypeAndCompanyById(lower, upper);
+                    }
+                });
+
+
 
             Field<CompanyObjType>(
                 Company.company,
@@ -73,16 +193,23 @@ namespace BachelorDegreeProject.Schema
                 });
             Field<ProductTypeObjType>(
                 ProductType.productType,
+                arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "id" }
+                ),
                 resolve: context =>
                 {
+                    var id = context.GetArgument<int>("id");
                     if (database == Db.Mongo)
                     {
-                        return null;
+                        BachelorProjectBackend.Repository.MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
+                        return mongo.GetProductById(id);
                     }
                     else
                     {
-                        return null;
+                        BachelorProjectBackend.Repository.MySqlHandler mySql = new BachelorProjectBackend.Repository.MySqlHandler();
+                        return mySql.GetProductJoinProductTypeById(id);
                     }
+                
                 });
             //    Field<TestType>(
             //Models.test.testObject,

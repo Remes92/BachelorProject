@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BachelorProjectBackend.Models;
 
 using MySql.Data.MySqlClient;
@@ -143,7 +144,7 @@ namespace BachelorProjectBackend.Repository
                 conn.Close();
             }
         }
-        public Product GetProductById(int lower, int upper)
+        public List<Product> GetProductById(int lower, int upper)
         {
             MySqlConnection conn = Connect();
             try
@@ -154,10 +155,13 @@ namespace BachelorProjectBackend.Repository
                              "WHERE product.ProductId BETWEEN " + lower + " AND " + upper;
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
+                List<Product> products = new List<Product>();
+                while (rdr.Read())
+                {
+                    products.Add(ProductFactory.Create(rdr));
 
-                Product product = ProductFactory.Create(rdr);
-                return product;
+                }
+                return products;
             }
             catch (Exception e)
             {
@@ -170,7 +174,7 @@ namespace BachelorProjectBackend.Repository
             }
         }
 
-        public Product GetProductJoinProductTypeById(int lower, int upper)
+        public List<Product> GetProductJoinProductTypeById(int lower, int upper)
         {
 
             MySqlConnection conn = Connect();
@@ -183,10 +187,13 @@ namespace BachelorProjectBackend.Repository
                              "WHERE product.ProductId BETWEEN "+lower+" AND " + upper;
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
+                List<Product> products = new List<Product>();
+                while (rdr.Read())
+                {
+                    products.Add(ProductFactory.Create(rdr));
 
-                Product product = ProductFactory.Create(rdr);
-                return product;
+                }
+                return products;
             }
             catch (Exception e)
             {
@@ -199,7 +206,7 @@ namespace BachelorProjectBackend.Repository
             }
         }
 
-        public Product GetProductJoinProductTypeAndCompanyById(int lower, int upper)
+        public List<Product> GetProductJoinProductTypeAndCompanyById(int lower, int upper)
         {
 
             MySqlConnection conn = Connect();
@@ -213,10 +220,14 @@ namespace BachelorProjectBackend.Repository
                              "WHERE product.ProductId BETWEEN " + lower + " AND " + upper;
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
+                List<Product> products = new List<Product>();
+                while (rdr.Read())
+                {
+                    products.Add(ProductFactory.Create(rdr));
 
-                Product product = ProductFactory.Create(rdr);
-                return product;
+                }
+
+                return products;
             }
             catch (Exception e)
             {
@@ -297,7 +308,6 @@ namespace BachelorProjectBackend.Repository
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 rdr.Read();
-
                 Product product = ProductFactory.Create(rdr);
                 return product;
             }

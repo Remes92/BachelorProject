@@ -98,10 +98,6 @@ namespace BachelorDegreeProject.Types
             Field(x => x.Person_IdType, type: typeof(StringGraphType));
             Field(x => x.Person_ManualHandling, type: typeof(BooleanGraphType));
             Field(x => x.InstanceId, type: typeof(StringGraphType));
-
-
-
-
         }
     }
 }

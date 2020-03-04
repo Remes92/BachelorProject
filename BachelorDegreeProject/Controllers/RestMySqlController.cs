@@ -16,23 +16,21 @@ namespace BachelorDegreeProject.Controllers
         [Route("testcase1")]
         [HttpGet]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase1() {
+        public IActionResult TestCase1(int id) {
 
-            //Models.test test = new Models.test() {id = "1", name = "rolf" };
-            return Ok("Hej");
+            MySqlHandler sqlhander = new MySqlHandler();
+            Product product = sqlhander.GetProductJoinProductTypeById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase2")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase2()
+        public IActionResult TestCase2(int id)
         {
-            //var test = BachelorProjectBackend.Repository.test.test1();
-
             MySqlHandler sqlhander = new MySqlHandler();
-            var test = sqlhander.GetPersonById(1);
-
-            return Ok(test);
+            Product product = sqlhander.GetProductById(id);
+            return Ok(product);
         }
 
         [HttpGet]
@@ -48,155 +46,152 @@ namespace BachelorDegreeProject.Controllers
         [HttpGet]
         [Route("testcase4")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase4()
+        public IActionResult TestCase4(int lowerLimit, int upperLimit)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            var product = sqlhander.GetProductJoinProductTypeById(lowerLimit,upperLimit);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase5")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase5()
+        public IActionResult TestCase5(int lowerLimit, int upperLimit)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            var product = sqlhander.GetProductById(lowerLimit,upperLimit);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase6")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase6()
+        public IActionResult TestCase6(int lowerLimit, int upperLimit)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            var products = sqlhander.GetProductJoinProductTypeAndCompanyById(lowerLimit,upperLimit);
+            return Ok(products);
         }
 
-        [HttpGet]
         [Route("testcase7")]
+        [HttpGet]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase7()
+        public IActionResult TestCase7(int id)
         {
 
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            var products = sqlhander.GetProductJoinProductTypeById(id);
+            return Ok(products);
         }
 
         [HttpGet]
         [Route("testcase8")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase8()
+        public IActionResult TestCase8(int id)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            Product product = sqlhander.GetProductById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase9")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase9()
+        public IActionResult TestCase9(int id)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            Product product = sqlhander.GetProductJoinProductTypeAndCompanyById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase10")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase10()
+        public IActionResult TestCase10(int lowerLimit, int upperLimit)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            var product = sqlhander.GetProductJoinProductTypeById(lowerLimit, upperLimit);
+            return Ok(product);
         }
 
-        [Route("testcase11")]
         [HttpGet]
+        [Route("testcase11")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase11()
+        public IActionResult TestCase11(int lowerLimit, int upperLimit)
         {
-
-            //Models.test test = new Models.test() { id = "1", name = "rolf" };
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            var product = sqlhander.GetProductById(lowerLimit, upperLimit);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase12")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase12()
+        public IActionResult TestCase12(int lowerLimit, int upperLimit)
         {
-            //var test = BachelorProjectBackend.Repository.test.test1();
+            MySqlHandler sqlhander = new MySqlHandler();
+            var products = sqlhander.GetProductJoinProductTypeAndCompanyById(lowerLimit, upperLimit);
+            return Ok(products);
+        }
+        [Route("testcase13")]
+        [HttpGet]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult TestCase13(int id)
+        {
 
             MySqlHandler sqlhander = new MySqlHandler();
-            var test = sqlhander.GetPersonById(1);
-
-            return Ok();
-        }
-
-        [HttpGet]
-        [Route("testcase13")]
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase13()
-        {
-
-
-            return Ok();
+            Product product = sqlhander.GetProductJoinProductTypeById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase14")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase14()
+        public IActionResult TestCase14(int id)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            Product product = sqlhander.GetProductById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase15")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase15()
+        public IActionResult TestCase15(int id)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            Product product = sqlhander.GetProductJoinProductTypeAndCompanyById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase16")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase16()
+        public IActionResult TestCase16(int lowerLimit, int upperLimit)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            var product = sqlhander.GetProductJoinProductTypeById(lowerLimit, upperLimit);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase17")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase17()
+        public IActionResult TestCase17(int lowerLimit, int upperLimit)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            var product = sqlhander.GetProductById(lowerLimit, upperLimit);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase18")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase18()
+        public IActionResult TestCase18(int lowerLimit, int upperLimit)
         {
-
-
-            return Ok();
+            MySqlHandler sqlhander = new MySqlHandler();
+            var products = sqlhander.GetProductJoinProductTypeAndCompanyById(lowerLimit, upperLimit);
+            return Ok(products);
         }
-
     }
 }
