@@ -8,35 +8,34 @@ using MongoDB.Bson;
 /// </summary>
 public static class ProductTypeFactory
 {
-    public static ProductType Create(MySqlDataReader row)
+    public static ProductType Create(MySqlDataReader row, int startValue = 0)
     {
-        row.Read();
 
         ProductType productType = new ProductType()
         {
-            ProductTypeId = (int)row[0],
-            ProductType_DescriptionString = row[1].ToString(),
-            ProductType_KeySellingPoint = row[2].ToString(),
-            ProductType_Label = row[3].ToString(),
-            ProductType_Name = row[4].ToString(),
-            ProductType_Status = (int)row[5]
+            ProductTypeId = (int)row[startValue+0],
+            ProductType_DescriptionString = row[startValue + 1].ToString(),
+            ProductType_KeySellingPoint = row[startValue + 2].ToString(),
+            ProductType_Label = row[startValue + 3].ToString(),
+            ProductType_Name = row[startValue + 4].ToString(),
+            ProductType_Status = (int)row[startValue + 5]
         };
         return productType;
     }
 
-    public static ProductType Create(BsonDocument row)
+    public static ProductType Create(BsonDocument row, int startValue = 0)
     {
         // Removes the _id 
         row.RemoveAt(0);
 
         ProductType productType = new ProductType()
         {
-            ProductTypeId = Int32.Parse(row.GetElement(0).Value.ToString()),
-            ProductType_DescriptionString = row.GetElement(1).Value.ToString(),
-            ProductType_KeySellingPoint = row.GetElement(2).Value.ToString(),
-            ProductType_Label = row.GetElement(3).Value.ToString(),
-            ProductType_Name = row.GetElement(4).Value.ToString(),
-            ProductType_Status = Int32.Parse(row.GetElement(5).Value.ToString())
+            ProductTypeId = Int32.Parse(row.GetElement(startValue + 0).Value.ToString()),
+            ProductType_DescriptionString = row.GetElement(startValue + 1).Value.ToString(),
+            ProductType_KeySellingPoint = row.GetElement(startValue + 2).Value.ToString(),
+            ProductType_Label = row.GetElement(startValue + 3).Value.ToString(),
+            ProductType_Name = row.GetElement(startValue + 4).Value.ToString(),
+            ProductType_Status = Int32.Parse(row.GetElement(startValue + 5).Value.ToString())
         };
         return productType;
     }
