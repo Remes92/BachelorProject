@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using MongoDB.Driver.Linq;
 using BachelorProjectBackend.Models;
 using Newtonsoft.Json;
 
@@ -115,16 +116,17 @@ namespace BachelorProjectBackend.Repository
             }
         }
 
-        public Department GetDepartmentById(int id)
+        public Department GetDepartmentById(int lower, int upper)
         {
             try
             {
                 var db = dbClient.GetDatabase(database);
-                var collection = db.GetCollection<BsonDocument>("Department");
-                var filter = Builders<BsonDocument>.Filter.Eq("DepartmentId", id.ToString());
-                var document = collection.Find(filter).FirstOrDefault();
-                Department department = DepartmentFactory.Create(document);
-                return department;
+                var collection = db.GetCollection<BsonDocument>("test");
+                var builder = Builders<BsonDocument>.Filter;
+                var filter = builder.Gte("CompanyId",2) & builder.Lte("CompanyId",8);
+                var d = collection.Find(filter).ToList();
+
+                return null;
             }
             catch (Exception e)
             {

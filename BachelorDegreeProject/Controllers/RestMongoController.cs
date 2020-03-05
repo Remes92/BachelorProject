@@ -179,10 +179,11 @@ namespace BachelorDegreeProject.Controllers
         [HttpGet]
         [Route("testcase18")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase18()
+        public IActionResult TestCase18(int lowerLimit, int upperLimit)
         {
 
-
+            var mh = new MongoHandler();
+            var m = mh.GetDepartmentById(lowerLimit,upperLimit);
             return Ok();
         }
     }
