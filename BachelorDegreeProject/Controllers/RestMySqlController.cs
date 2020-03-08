@@ -17,7 +17,6 @@ namespace BachelorDegreeProject.Controllers
         [HttpGet]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult TestCase1(int id) {
-
             MySqlHandler sqlhander = new MySqlHandler();
             Product product = sqlhander.GetProductJoinProductTypeById(id);
             return Ok(product);

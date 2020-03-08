@@ -134,5 +134,31 @@ namespace BachelorProjectBackend.Repository
                 return null;
             }
         }
+
+        public string GetProductJoinTypeById(int id)
+        {
+            try
+            {
+                var db = dbClient.GetDatabase(database);
+                var collection = db.GetCollection<BsonDocument>("Product");
+                var filter = Builders<BsonDocument>.Filter.Eq("ProductId", id.ToString());
+
+
+                var aggregation = collection.Aggregate()
+                    .Lookup("ProductType", "productTypeId", "ProductTypeId", "ProductType_object")
+                    ;
+                var result = aggregation.ToList();
+
+
+                var document = collection.Find(filter).FirstOrDefault();
+                Product product = ProductFactory.Create(document);
+                return product.ToString();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+        }
     }
 }

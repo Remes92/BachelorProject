@@ -15,10 +15,10 @@ namespace BachelorDegreeProject.Controllers
         [Route("testcase1")]
         [HttpGet]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase1()
+        public IActionResult TestCase1(int id)
         {
-           // var test = BachelorProjectBackend.Repository.Test.Test1();
-
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductJoinTypeById(id);
             return Ok();
         }
 
@@ -28,9 +28,9 @@ namespace BachelorDegreeProject.Controllers
         public IActionResult TestCase2()
         {
 
-            MongoHandler sqlhander = new MongoHandler();
-            var test = sqlhander.GetCompanyById(1);
-            return Ok(test);
+            MongoHandler mongohandler = new MongoHandler();
+            var company = mongohandler.GetCompanyById(1);
+            return Ok(company);
         }
 
         [HttpGet]
