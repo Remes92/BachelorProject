@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BachelorProjectBackend.Models;
 
 using MySql.Data.MySqlClient;
@@ -23,7 +24,7 @@ namespace BachelorProjectBackend.Repository
             User = "root";
             Database = "bachelorproject_db";
             Port = 3306;
-            Password = "";
+            Password = "1234";
         }
 
         public MySqlHandler(string server, string user, string database, int port, string password)
@@ -54,30 +55,6 @@ namespace BachelorProjectBackend.Repository
 
                 Person person = PersonFactory.Create(rdr);
                 return person;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-                return null;
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
-        public Product GetProductById(int id)
-        {
-            MySqlConnection conn = Connect();
-            try
-            {
-                conn.Open();
-                string sql = "SELECT * FROM product WHERE ProductId = " + id;
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-
-                Product product = ProductFactory.Create(rdr);
-                return product;
             }
             catch (Exception e)
             {
@@ -148,8 +125,191 @@ namespace BachelorProjectBackend.Repository
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
 
+                /*
+                 Create company(rdr[0 - 45])
+                 Create Product(rdr,45);
+                  row[bound+1)
+                 */
+
                 Department department = DepartmentFactory.Create(rdr);
                 return department;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public List<Product> GetProductById(int lower, int upper)
+        {
+            MySqlConnection conn = Connect();
+            try
+            {
+                conn.Open();
+                string sql = "SELECT * "+ 
+                             "FROM bachelorproject_db.product " +
+                             "WHERE product.ProductId BETWEEN " + lower + " AND " + upper;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                List<Product> products = new List<Product>();
+                while (rdr.Read())
+                {
+                    products.Add(ProductFactory.Create(rdr));
+
+                }
+                return products;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public List<Product> GetProductJoinProductTypeById(int lower, int upper)
+        {
+
+            MySqlConnection conn = Connect();
+            try
+            {
+                conn.Open();
+                string sql = "SELECT * " +
+                             "FROM product " +
+                             "JOIN producttype ON producttype.productTypeId = product.productTypeId " +
+                             "WHERE product.ProductId BETWEEN "+lower+" AND " + upper;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                List<Product> products = new List<Product>();
+                while (rdr.Read())
+                {
+                    products.Add(ProductFactory.Create(rdr));
+
+                }
+                return products;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public List<Product> GetProductJoinProductTypeAndCompanyById(int lower, int upper)
+        {
+
+            MySqlConnection conn = Connect();
+            try
+            {
+                conn.Open();
+                string sql = "SELECT * " +
+                             "FROM product " +
+                             "JOIN producttype ON producttype.productTypeId = product.productTypeId " +
+                             "JOIN company ON company.CompanyId = product.CompanyId " +
+                             "WHERE product.ProductId BETWEEN " + lower + " AND " + upper;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                List<Product> products = new List<Product>();
+                while (rdr.Read())
+                {
+                    products.Add(ProductFactory.Create(rdr));
+
+                }
+
+                return products;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+
+        public Product GetProductById(int id)
+        {
+            MySqlConnection conn = Connect();
+            try
+            {
+                conn.Open();
+                string sql = "SELECT * FROM product WHERE ProductId = " + id;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read();
+
+                Product product = ProductFactory.Create(rdr);
+                return product;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public Product GetProductJoinProductTypeById(int id)
+        {
+            MySqlConnection conn = Connect();
+            try
+            {
+                conn.Open();
+                string sql = "SELECT * "+ 
+                             "FROM product " +
+                             "JOIN producttype ON producttype.productTypeId = product.productTypeId " +
+                             "WHERE ProductId = " + id;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read();
+
+                Product product = ProductFactory.Create(rdr);
+                return product;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public Product GetProductJoinProductTypeAndCompanyById(int id)
+        {
+            MySqlConnection conn = Connect();
+            try
+            {
+                conn.Open();
+                string sql = "SELECT * " +
+                             "FROM product " +
+                             "JOIN producttype ON producttype.productTypeId = product.productTypeId " +
+                             "JOIN company ON company.CompanyId = product.CompanyId " +
+                             "WHERE ProductId = " + id;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read();
+                Product product = ProductFactory.Create(rdr);
+                return product;
             }
             catch (Exception e)
             {

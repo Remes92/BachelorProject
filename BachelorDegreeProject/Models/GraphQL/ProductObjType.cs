@@ -55,6 +55,8 @@ namespace BachelorDegreeProject.Types
             Field(x => x.Product_PhoneNo, type: typeof(StringGraphType));
             Field(x => x.Product_URL, type: typeof(StringGraphType));
             Field(x => x.ProductType, type: typeof(StringGraphType));
+            Field(name: "productTypeObject", type: typeof(ProductTypeObjType),resolve: context => context.Source.productTypeObject);
+            Field(name: "companyObject", type: typeof(CompanyObjType),resolve: context => context.Source.companyObject);
         }
     }
 }

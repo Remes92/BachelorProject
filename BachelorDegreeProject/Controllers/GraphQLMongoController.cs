@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using BachelorDegreeProject.Query;
 using GraphQL;
-using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
+using BachelorProjectAPI.Models;
 
 namespace BachelorDegreeProject.Controllers
 {
@@ -18,9 +18,9 @@ namespace BachelorDegreeProject.Controllers
             if(query == null) { throw new ArgumentException(nameof(query)); };
             var inputs = query.Variables.ToInputs();
 
-            var schema = new Schema()
+            var schema = new GraphQL.Types.Schema()
             {
-                Query = new Types.TestQuery() // TODO: byt till mongo backend
+                Query = new Schema.Query(Db.Mongo)
             };
 
             var result = await new DocumentExecuter().ExecuteAsync(_ => 

@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using BachelorDegreeProject.Query;
 using GraphQL;
-using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
+using BachelorProjectAPI.Models;
 
 namespace BachelorDegreeProject.Controllers
 {
@@ -16,9 +16,9 @@ namespace BachelorDegreeProject.Controllers
         {
             var inputs = query.Variables.ToInputs();
 
-            var schema = new Schema()
+            var schema = new GraphQL.Types.Schema()
             {
-                Query = new Types.TestQuery()
+                Query = new Schema.Query(Db.MySql)
             };
 
             var result = await new DocumentExecuter().ExecuteAsync(_ =>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BachelorProjectBackend.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,9 +17,9 @@ namespace BachelorDegreeProject.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult TestCase1()
         {
-            var test = BachelorProjectBackend.Repository.Test.Test1();
+           // var test = BachelorProjectBackend.Repository.Test.Test1();
 
-            return Ok(test);
+            return Ok();
         }
 
         [HttpGet]
@@ -27,8 +28,9 @@ namespace BachelorDegreeProject.Controllers
         public IActionResult TestCase2()
         {
 
-
-            return Ok();
+            MongoHandler sqlhander = new MongoHandler();
+            var test = sqlhander.GetCompanyById(1);
+            return Ok(test);
         }
 
         [HttpGet]
@@ -177,10 +179,11 @@ namespace BachelorDegreeProject.Controllers
         [HttpGet]
         [Route("testcase18")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase18()
+        public IActionResult TestCase18(int lowerLimit, int upperLimit)
         {
 
-
+            var mh = new MongoHandler();
+            var m = mh.GetDepartmentById(lowerLimit,upperLimit);
             return Ok();
         }
     }

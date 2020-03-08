@@ -51,5 +51,9 @@ namespace BachelorProjectBackend.Models
         public string Product_PhoneNo { get; set; }
         public string Product_URL { get; set; }
         public string ProductType { get; set; }
-    }
+
+        public ProductType productTypeObject { get; set; }
+
+        public Company companyObject { get; set; }
+}
 }
