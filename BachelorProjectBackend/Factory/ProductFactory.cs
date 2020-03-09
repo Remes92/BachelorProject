@@ -139,29 +139,36 @@ public static class ProductFactory
             ProductType = row.GetElement(startValue + 42).Value.ToString(),
         };
 
-        //int currCursor = 43;
-
-        //while (currCursor < row.ElementCount)
-        //{
-        //    switch (row.GetElement(currCursor).Name)
-        //    {
-        //        case "CompanyId":
-        //            // Add company column count to cursor
-        //            Company company = CompanyFactory.Create(row, currCursor);
-        //            currCursor += 7;
-        //            product.companyObject = company;
-        //            break;
-        //        case "ProductTypeId":
-        //            // add productType column count to cursor
-        //            ProductType typ = ProductTypeFactory.Create(row, currCursor);
-        //            currCursor += 6;
-        //            product.productTypeObject = typ;
-        //            break;
-        //        default:
-        //            currCursor = row.ElementCount;
-        //            break;
-        //    }
-        //}
+        //should be put at last index above +1.
+        int currCursor = 43;
+        BsonDocument document;
+        while (currCursor < row.ElementCount)
+        {
+            switch (row.GetElement(currCursor).Name)
+            {
+                case "Company_object":
+                    document = new BsonDocument(row.GetElement(currCursor));
+                    Company company = CompanyFactory.Create(document);
+                    product.companyObject = company;
+                    currCursor++;   
+                    break;
+                case "ProductType_object":
+                    /*
+                     * BsonArray arr = new BsonArray();
+                        arr.Add(BsonSerializer.Deserialize<BsonDocument>(myjson1));
+                        https://stackoverflow.com/questions/37589694/cannot-convert-bsonarray-to-bsondocument-in-c-sharp
+                     */
+                    document = new BsonDocument(row.GetElement(currCursor));
+                    var test = row.GetElement(currCursor).Value;
+                    ProductType productType = ProductTypeFactory.Create(document);
+                    product.productTypeObject = productType;
+                    currCursor++;
+                    break;
+                default:
+                    currCursor = row.ElementCount;
+                    break;
+            }
+        }
 
         return product;
     }
