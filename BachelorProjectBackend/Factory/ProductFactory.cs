@@ -2,6 +2,7 @@
 using BachelorProjectBackend.Models;
 using MySql.Data.MySqlClient;
 using MongoDB.Bson;
+using System.Collections.Generic;
 
 /// <summary>
 /// Produces Persons 
@@ -107,28 +108,28 @@ public static class ProductFactory
             Product_DescriptionString = row.GetElement(startValue + 11).Value.ToString(),
             Product_EndDate = Convert.ToDateTime(row.GetElement(startValue + 12).Value.ToString()),
             Product_ExternalReference = row.GetElement(startValue + 13).Value.ToString(),
-            Product_Price = Convert.ToDecimal(row.GetElement(startValue + 14).Value.ToString()),
-            Product_Parameters = row.GetElement(startValue + 15).Value.ToString(),
-            Product_Interests = row.GetElement(startValue + 16).Value.ToString(),
-            Product_Category = row.GetElement(startValue + 17).Value.ToString(),
-            Product_CommissionPrice = Convert.ToDecimal(row.GetElement(startValue + 18).Value.ToString()),
-            Product_SupplierId = row.GetElement(startValue + 19).Value.ToString(),
-            Product_Rating = Convert.ToDecimal(row.GetElement(startValue + 20).Value.ToString()),
-            Product_Key = row.GetElement(startValue + 21).Value.ToString(),
-            Product_Max = row.GetElement(startValue + 22).Value.ToString(),
-            Product_Name = row.GetElement(startValue + 23).Value.ToString(),
-            Product_Price2 = Convert.ToDecimal(row.GetElement(startValue + 24).Value.ToString()),
+            Product_Price = row.GetElement(startValue + 14).Value.ToDecimal(),
+            Product_Interests = row.GetElement(startValue + 15).Value.ToString(),
+            Product_Category = row.GetElement(startValue + 16).Value.ToString(),
+            Product_CommissionPrice = row.GetElement(startValue + 17).Value.ToDecimal(),
+            Product_SupplierId = row.GetElement(startValue + 18).Value.ToString(),
+            Product_Rating = row.GetElement(startValue + 19).Value.ToDecimal(),
+            Product_Key = row.GetElement(startValue + 20).Value.ToString(),
+            Product_Max = row.GetElement(startValue + 21).Value.ToString(),
+            Product_Name = row.GetElement(startValue + 22).Value.ToString(),
+            Product_Price2 = row.GetElement(startValue + 23).Value.ToDecimal(),
+            Product_Parameters = row.GetElement(startValue + 24).Value.ToString(),
             Product_NoticeLevel = Int32.Parse(row.GetElement(startValue + 25).Value.ToString()),
             Product_Premium = row.GetElement(startValue + 26).Value.ToString(),
             Product_Product = row.GetElement(startValue + 27).Value.ToString(),
             Product_Version = row.GetElement(startValue + 28).Value.ToString(),
-            Product_Level = Convert.ToDecimal(row.GetElement(startValue + 29).Value.ToString()),
+            Product_Level = row.GetElement(startValue + 29).Value.ToDecimal(),
             Product_ApprovedDate = Convert.ToDateTime(row.GetElement(startValue + 30).Value.ToString()),
             ResellerId = row.GetElement(startValue + 31).Value.ToString(),
-            Product_Retention = Convert.ToDecimal(row.GetElement(startValue + 32).Value.ToString()),
-            Product_Rule1 = Convert.ToDecimal(row.GetElement(startValue + 33).Value.ToString()),
-            Product_Rule2 = Convert.ToDecimal(row.GetElement(startValue + 34).Value.ToString()),
-            Product_Rule3 = Convert.ToDecimal(row.GetElement(startValue + 35).Value.ToString()),
+            Product_Retention = row.GetElement(startValue + 32).Value.ToDecimal(),
+            Product_Rule1 = row.GetElement(startValue + 33).Value.ToDecimal(),
+            Product_Rule2 = row.GetElement(startValue + 34).Value.ToDecimal(),
+            Product_Rule3 = row.GetElement(startValue + 35).Value.ToDecimal(),
             Product_Method = row.GetElement(startValue + 36).Value.ToString(),
             Product_StartDate = Convert.ToDateTime(row.GetElement(startValue + 37).Value.ToString()),
             Product_Status = Int32.Parse(row.GetElement(startValue + 38).Value.ToString()),
@@ -138,29 +139,29 @@ public static class ProductFactory
             ProductType = row.GetElement(startValue + 42).Value.ToString(),
         };
 
-        int currCursor = 43;
+        //int currCursor = 43;
 
-        while (currCursor < row.ElementCount)
-        {
-            switch (row.GetElement(currCursor).Name)
-            {
-                case "CompanyId":
-                    // Add company column count to cursor
-                    Company company = CompanyFactory.Create(row, currCursor);
-                    currCursor += 7;
-                    product.companyObject = company;
-                    break;
-                case "ProductTypeId":
-                    // add productType column count to cursor
-                    ProductType typ = ProductTypeFactory.Create(row, currCursor);
-                    currCursor += 6;
-                    product.productTypeObject = typ;
-                    break;
-                default:
-                    currCursor = row.ElementCount;
-                    break;
-            }
-        }
+        //while (currCursor < row.ElementCount)
+        //{
+        //    switch (row.GetElement(currCursor).Name)
+        //    {
+        //        case "CompanyId":
+        //            // Add company column count to cursor
+        //            Company company = CompanyFactory.Create(row, currCursor);
+        //            currCursor += 7;
+        //            product.companyObject = company;
+        //            break;
+        //        case "ProductTypeId":
+        //            // add productType column count to cursor
+        //            ProductType typ = ProductTypeFactory.Create(row, currCursor);
+        //            currCursor += 6;
+        //            product.productTypeObject = typ;
+        //            break;
+        //        default:
+        //            currCursor = row.ElementCount;
+        //            break;
+        //    }
+        //}
 
         return product;
     }
