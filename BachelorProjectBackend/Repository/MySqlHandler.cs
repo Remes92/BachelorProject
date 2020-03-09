@@ -20,11 +20,11 @@ namespace BachelorProjectBackend.Repository
 
         public MySqlHandler()
         {
-            Server = "127.0.0.1";
-            User = "root";
+            Server = "192.168.128.63";
+            User = "dbuser";
             Database = "bachelorproject_db";
             Port = 3306;
-            Password = "1234";
+            Password = "123";
         }
 
         public MySqlHandler(string server, string user, string database, int port, string password)
