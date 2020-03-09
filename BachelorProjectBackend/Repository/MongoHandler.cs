@@ -40,7 +40,7 @@ namespace BachelorProjectBackend.Repository
 
         private MongoClient Connect()
         {
-            MongoClient dbClient = new MongoClient("mongodb://"+user+":"+password+"@"+server+":"+port);          
+            MongoClient dbClient = new MongoClient("mongodb://" + user + ":" + password + "@" + server + ":" + port);
             return dbClient;
         }
 
@@ -54,24 +54,6 @@ namespace BachelorProjectBackend.Repository
                 var document = collection.Find(filter).FirstOrDefault();
                 Person person = PersonFactory.Create(document);
                 return person;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-                return null;
-            }
-        }
-
-        public Product GetProductById(int id)
-        {
-            try
-            {
-                var db = dbClient.GetDatabase(database);
-                var collection = db.GetCollection<BsonDocument>("Product");
-                var filter = Builders<BsonDocument>.Filter.Eq("ProductId", id.ToString());
-                var document = collection.Find(filter).FirstOrDefault();
-                Product product = ProductFactory.Create(document);
-                return product;
             }
             catch (Exception e)
             {
@@ -116,17 +98,16 @@ namespace BachelorProjectBackend.Repository
             }
         }
 
-        public Department GetDepartmentById(int lower, int upper)
+        public Product GetProductById(int id)
         {
             try
             {
                 var db = dbClient.GetDatabase(database);
-                var collection = db.GetCollection<BsonDocument>("test");
-                var builder = Builders<BsonDocument>.Filter;
-                var filter = builder.Gte("CompanyId",2) & builder.Lte("CompanyId",8);
-                var d = collection.Find(filter).ToList();
-
-                return null;
+                var collection = db.GetCollection<BsonDocument>("Product");
+                var filter = Builders<BsonDocument>.Filter.Eq("ProductId", id.ToString());
+                var document = collection.Find(filter).FirstOrDefault();
+                Product product = ProductFactory.Create(document);
+                return product;
             }
             catch (Exception e)
             {
@@ -135,24 +116,140 @@ namespace BachelorProjectBackend.Repository
             }
         }
 
-        public string GetProductJoinTypeById(int id)
+        public List<Product> GetProductById(int lower, int upper)
         {
             try
             {
                 var db = dbClient.GetDatabase(database);
                 var collection = db.GetCollection<BsonDocument>("Product");
-                var filter = Builders<BsonDocument>.Filter.Eq("ProductId", id.ToString());
+                var builder = Builders<BsonDocument>.Filter;
+                var filter = builder.Gte("ProductId", lower) & builder.Lte("ProductId", upper);
+                var documents = collection.Find(filter).ToList();
 
+                List<Product> products = new List<Product>();
+
+                for (int i = 0; i < documents.Count; i++)
+                {
+                    products.Add(ProductFactory.Create(documents[i]));
+                }
+                return products;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+        }
+
+        public List<Product> GetProductJoinProductTypeById(int lower, int upper)
+        {
+            try
+            {
+                var db = dbClient.GetDatabase(database);
+                var collection = db.GetCollection<BsonDocument>("Product");
+                var builder = Builders<BsonDocument>.Filter;
+                var filter = builder.Gte("ProductId", lower) & builder.Lte("ProductId", upper);
 
                 var aggregation = collection.Aggregate()
                     .Lookup("ProductType", "productTypeId", "ProductTypeId", "ProductType_object")
+                    .Match(filter)
                     ;
-                var result = aggregation.ToList();
 
+                var documents = aggregation.ToList();
 
-                var document = collection.Find(filter).FirstOrDefault();
+                List<Product> products = new List<Product>();
+
+                for (int i = 0; i < documents.Count; i++)
+                {
+                    products.Add(ProductFactory.Create(documents[i]));
+                }
+                return products;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+        }
+
+        public List<Product> GetProductJoinProductTypeAndCompanyById(int lower, int upper)
+        {
+            try
+            {
+                var db = dbClient.GetDatabase(database);
+                var collection = db.GetCollection<BsonDocument>("Product");
+                var builder = Builders<BsonDocument>.Filter;
+                var filter = builder.Gte("ProductId", lower) & builder.Lte("ProductId", upper);
+
+                var aggregation = collection.Aggregate()
+                    .Lookup("ProductType", "productTypeId", "ProductTypeId", "ProductType_object")
+                    .Lookup("Company", "CompanyId", "CompanyId", "Company_object")
+                    .Match(filter)
+                    ;
+
+                var documents = aggregation.ToList();
+
+                List<Product> products = new List<Product>();
+
+                for (int i = 0; i < documents.Count; i++)
+                {
+                    products.Add(ProductFactory.Create(documents[i]));
+                }
+                return products;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+        }
+
+        public Product GetProductJoinProductTypeById(int id)
+        {
+            try
+            {
+                var db = dbClient.GetDatabase(database);
+                var collection = db.GetCollection<BsonDocument>("Product");
+                var filter = Builders<BsonDocument>.Filter.Eq("ProductId", id);
+
+                var aggregation = collection.Aggregate()
+                    .Lookup("ProductType", "productTypeId", "ProductTypeId", "ProductType_object")
+                    .Match(filter)
+                    ;
+
+                var documents = aggregation.ToList();
+                var document = documents[0];
                 Product product = ProductFactory.Create(document);
-                return product.ToString();
+
+                return product;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+        }
+
+        public Product GetProductJoinProductTypeAndCompanyById(int id)
+        {
+            try
+            {
+                var db = dbClient.GetDatabase(database);
+                var collection = db.GetCollection<BsonDocument>("Product");
+                var filter = Builders<BsonDocument>.Filter.Eq("ProductId", id);
+
+                var aggregation = collection.Aggregate()
+                    .Lookup("ProductType", "productTypeId", "ProductTypeId", "ProductType_object")
+                    .Lookup("Company", "CompanyId", "CompanyId", "Company_object")
+                    .Match(filter)
+                    ;
+
+                var documents = aggregation.ToList();
+                var document = documents[0];
+                Product product = ProductFactory.Create(document);
+
+                return product;
             }
             catch (Exception e)
             {
@@ -161,4 +258,5 @@ namespace BachelorProjectBackend.Repository
             }
         }
     }
+
 }

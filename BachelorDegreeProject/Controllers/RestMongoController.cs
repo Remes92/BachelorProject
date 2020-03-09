@@ -18,173 +18,178 @@ namespace BachelorDegreeProject.Controllers
         public IActionResult TestCase1(int id)
         {
             MongoHandler mongohandler = new MongoHandler();
-            var product = mongohandler.GetProductJoinTypeById(id);
-            return Ok();
+            var product = mongohandler.GetProductJoinProductTypeById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase2")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase2()
+        public IActionResult TestCase2(int id)
         {
-
             MongoHandler mongohandler = new MongoHandler();
-            var company = mongohandler.GetCompanyById(1);
-            return Ok(company);
+            var product = mongohandler.GetProductById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase3")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase3()
+        public IActionResult TestCase3(int id)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductJoinProductTypeAndCompanyById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase4")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase4()
+        public IActionResult TestCase4(int lower, int upper)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductJoinProductTypeById(lower,upper);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase5")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase5()
+        public IActionResult TestCase5(int lower, int upper)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductById(lower, upper);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase6")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase6()
+        public IActionResult TestCase6(int lower, int upper)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductById(lower, upper);
+            return Ok(product);
         }
 
-        [HttpGet]
         [Route("testcase7")]
+        [HttpGet]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase7()
+        public IActionResult TestCase7(int id)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductJoinProductTypeById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase8")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase8()
+        public IActionResult TestCase8(int id)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase9")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase9()
+        public IActionResult TestCase9(int id)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductJoinProductTypeAndCompanyById(id);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase10")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase10()
+        public IActionResult TestCase10(int lower, int upper)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductJoinProductTypeById(lower, upper);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("testcase11")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase11()
+        public IActionResult TestCase11(int lower, int upper)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductById(lower, upper);
+            return Ok(product);
         }
+
         [HttpGet]
         [Route("testcase12")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase12()
+        public IActionResult TestCase12(int lower, int upper)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductById(lower, upper);
+            return Ok(product);
         }
-        [HttpGet]
+
         [Route("testcase13")]
+        [HttpGet]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase13()
+        public IActionResult TestCase13(int id)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductJoinProductTypeById(id);
+            return Ok(product);
         }
+
         [HttpGet]
         [Route("testcase14")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase14()
+        public IActionResult TestCase14(int id)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductById(id);
+            return Ok(product);
         }
+
         [HttpGet]
         [Route("testcase15")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase15()
+        public IActionResult TestCase15(int id)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductJoinProductTypeAndCompanyById(id);
+            return Ok(product);
         }
+
         [HttpGet]
         [Route("testcase16")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase16()
+        public IActionResult TestCase16(int lower, int upper)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductJoinProductTypeById(lower, upper);
+            return Ok(product);
         }
+
         [HttpGet]
         [Route("testcase17")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase17()
+        public IActionResult TestCase17(int lower, int upper)
         {
-
-
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductById(lower, upper);
+            return Ok(product);
         }
+
         [HttpGet]
         [Route("testcase18")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult TestCase18(int lowerLimit, int upperLimit)
+        public IActionResult TestCase18(int lower, int upper)
         {
-
-            var mh = new MongoHandler();
-            var m = mh.GetDepartmentById(lowerLimit,upperLimit);
-            return Ok();
+            MongoHandler mongohandler = new MongoHandler();
+            var product = mongohandler.GetProductById(lower, upper);
+            return Ok(product);
         }
     }
 }
