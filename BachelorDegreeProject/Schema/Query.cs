@@ -25,12 +25,12 @@ namespace BachelorDegreeProject.Schema
                         var id = context.GetArgument<int>("id");
                         if (database == Db.Mongo)
                         {
-                            BachelorProjectBackend.Repository.MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
+                            MongoHandler mongo = new MongoHandler();
                             return mongo.GetProductById(id);
                         }
                         else
                         {
-                            BachelorProjectBackend.Repository.MySqlHandler mySql = new BachelorProjectBackend.Repository.MySqlHandler();
+                            MySqlHandler mySql = new MySqlHandler();
                             return mySql.GetProductById(id);
                         }
                     }
@@ -48,9 +48,8 @@ namespace BachelorDegreeProject.Schema
                     var upper = context.GetArgument<int>("upper");
                     if (database == Db.Mongo)
                     {
-                        MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
-                                    // return mongo.GetProductById(lower,upper);
-                                    return null;
+                        MongoHandler mongo = new MongoHandler();
+                        return mongo.GetProductById(lower,upper);
                     }
                     else
                     {
@@ -70,12 +69,12 @@ namespace BachelorDegreeProject.Schema
                         var id = context.GetArgument<int>("id");
                         if (database == Db.Mongo)
                         {
-                            BachelorProjectBackend.Repository.MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
-                            return mongo.GetProductById(id);
+                            MongoHandler mongo = new MongoHandler();
+                            return mongo.GetProductJoinProductTypeById(id);
                         }
                         else
                         {
-                            BachelorProjectBackend.Repository.MySqlHandler mySql = new BachelorProjectBackend.Repository.MySqlHandler();
+                            MySqlHandler mySql = new MySqlHandler();
                             return mySql.GetProductJoinProductTypeById(id);
                         }
                     }
@@ -94,9 +93,8 @@ namespace BachelorDegreeProject.Schema
                     var upper = context.GetArgument<int>("upper");
                     if (database == Db.Mongo)
                     {
-                        MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
-                                    // return mongo.GetProductById(lower,upper);
-                                    return null;
+                        MongoHandler mongo = new MongoHandler();
+                        return mongo.GetProductJoinProductTypeById(lower,upper);
                     }
                     else
                     {
@@ -116,8 +114,8 @@ namespace BachelorDegreeProject.Schema
                     var id = context.GetArgument<int>("id");
                     if (database == Db.Mongo)
                     {
-                        MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
-                        return mongo.GetProductById(id);
+                        MongoHandler mongo = new MongoHandler();
+                        return mongo.GetProductJoinProductTypeAndCompanyById(id);
                     }
                     else
                     {
@@ -139,9 +137,8 @@ namespace BachelorDegreeProject.Schema
                     var upper = context.GetArgument<int>("upper");
                     if (database == Db.Mongo)
                     {
-                        MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
-                        // return mongo.GetProductById(lower,upper);
-                        return null;
+                        MongoHandler mongo = new MongoHandler();
+                        return mongo.GetProductJoinProductTypeAndCompanyById(lower,upper);
                     }
                     else
                     {
@@ -201,28 +198,16 @@ namespace BachelorDegreeProject.Schema
                     var id = context.GetArgument<int>("id");
                     if (database == Db.Mongo)
                     {
-                        BachelorProjectBackend.Repository.MongoHandler mongo = new BachelorProjectBackend.Repository.MongoHandler();
-                        return mongo.GetProductById(id);
+                        MongoHandler mongo = new MongoHandler();
+                        return mongo.GetProductJoinProductTypeById(id);
                     }
                     else
                     {
-                        BachelorProjectBackend.Repository.MySqlHandler mySql = new BachelorProjectBackend.Repository.MySqlHandler();
+                        MySqlHandler mySql = new MySqlHandler();
                         return mySql.GetProductJoinProductTypeById(id);
                     }
                 
                 });
-            //    Field<TestType>(
-            //Models.test.testObject,
-            //arguments: new QueryArguments(
-            //    new QueryArgument<IdGraphType> { Name = "id", Description = "The ID of test" }
-            //),
-            //resolve: context =>
-            //{
-            //    var id = context.GetArgument<string>("id");
-            //    var t = BachelorProjectBackend.Repository.Test.Test1().FirstOrDefault(x => x.id == id);
-            //    return t;
-            //}
-            //);
         }
 
     }
