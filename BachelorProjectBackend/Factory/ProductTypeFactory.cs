@@ -30,12 +30,12 @@ public static class ProductTypeFactory
 
         ProductType productType = new ProductType()
         {
-            ProductTypeId = Int32.Parse(row.GetElement(startValue + 0).Value.ToString()),
+            ProductTypeId = row.GetElement(startValue + 0).Value.ToInt32(),
             ProductType_DescriptionString = row.GetElement(startValue + 1).Value.ToString(),
             ProductType_KeySellingPoint = row.GetElement(startValue + 2).Value.ToString(),
             ProductType_Label = row.GetElement(startValue + 3).Value.ToString(),
             ProductType_Name = row.GetElement(startValue + 4).Value.ToString(),
-            ProductType_Status = Int32.Parse(row.GetElement(startValue + 5).Value.ToString())
+            ProductType_Status = row.GetElement(startValue + 5).Value.ToInt32(),
         };
         return productType;
     }

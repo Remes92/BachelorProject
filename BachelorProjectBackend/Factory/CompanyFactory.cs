@@ -31,10 +31,10 @@ public static class CompanyFactory
 
         Company company = new Company()
         {
-            CompanyId = Int32.Parse(row.GetElement(startValue + 0).Value.ToString()),
+            CompanyId = row.GetElement(startValue + 0).Value.ToInt32(),
             Company_Name = row.GetElement(startValue + 1).Value.ToString(),
-            Company_DirectionIn = Convert.ToBoolean(Int32.Parse(row.GetElement(startValue + 2).Value.ToString())),
-            Company_DirectionOut = Convert.ToBoolean(Int32.Parse(row.GetElement(startValue + 3).Value.ToString())),
+            Company_DirectionIn = Convert.ToBoolean(row.GetElement(startValue + 2).Value.ToInt32()),
+            Company_DirectionOut = Convert.ToBoolean(row.GetElement(startValue + 0).Value.ToInt32()),
             Company_Phone = row.GetElement(startValue + 4).Value.ToString(),
             Company_Label = row.GetElement(startValue + 5).Value.ToString(),
             Company_Slogan = row.GetElement(startValue + 6).Value.ToString()

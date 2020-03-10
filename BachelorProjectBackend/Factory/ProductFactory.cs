@@ -147,19 +147,13 @@ public static class ProductFactory
             switch (row.GetElement(currCursor).Name)
             {
                 case "Company_object":
-                    document = new BsonDocument(row.GetElement(currCursor));
+                    document = new BsonDocument(row.GetElement(currCursor).Value[0].AsBsonDocument);
                     Company company = CompanyFactory.Create(document);
                     product.companyObject = company;
-                    currCursor++;   
+                    currCursor++;
                     break;
                 case "ProductType_object":
-                    /*
-                     * BsonArray arr = new BsonArray();
-                        arr.Add(BsonSerializer.Deserialize<BsonDocument>(myjson1));
-                        https://stackoverflow.com/questions/37589694/cannot-convert-bsonarray-to-bsondocument-in-c-sharp
-                     */
-                    document = new BsonDocument(row.GetElement(currCursor));
-                    var test = row.GetElement(currCursor).Value;
+                    document = new BsonDocument(row.GetElement(currCursor).Value[0].AsBsonDocument);
                     ProductType productType = ProductTypeFactory.Create(document);
                     product.productTypeObject = productType;
                     currCursor++;
