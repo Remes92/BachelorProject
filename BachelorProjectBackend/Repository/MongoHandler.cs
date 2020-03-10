@@ -5,7 +5,6 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Driver.Linq;
 using BachelorProjectBackend.Models;
-using Newtonsoft.Json;
 
 namespace BachelorProjectBackend.Repository
 {
