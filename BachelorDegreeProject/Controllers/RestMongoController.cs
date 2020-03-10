@@ -188,7 +188,7 @@ namespace BachelorDegreeProject.Controllers
         public IActionResult TestCase18(int lower, int upper)
         {
             MongoHandler mongohandler = new MongoHandler();
-            var product = mongohandler.GetProductById(lower, upper);
+            var product = mongohandler.GetProductJoinProductTypeAndCompanyById(lower, upper);
             return Ok(product);
         }
     }
