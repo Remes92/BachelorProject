@@ -50,7 +50,7 @@ namespace BachelorProjectBackend.Repository
             {
                 var db = dbClient.GetDatabase(database);
                 var collection = db.GetCollection<BsonDocument>("Person");
-                var filter = Builders<BsonDocument>.Filter.Eq("PersonId", id.ToString());
+                var filter = Builders<BsonDocument>.Filter.Eq("PersonId", id);
                 var document = collection.Find(filter).FirstOrDefault();
                 Person person = PersonFactory.Create(document);
                 return person;
@@ -68,7 +68,7 @@ namespace BachelorProjectBackend.Repository
             {
                 var db = dbClient.GetDatabase(database);
                 var collection = db.GetCollection<BsonDocument>("ProductType");
-                var filter = Builders<BsonDocument>.Filter.Eq("ProductTypeId", id.ToString());
+                var filter = Builders<BsonDocument>.Filter.Eq("ProductTypeId", id);
                 var document = collection.Find(filter).FirstOrDefault();
                 ProductType productType = ProductTypeFactory.Create(document);
                 return productType;
@@ -86,7 +86,7 @@ namespace BachelorProjectBackend.Repository
             {
                 var db = dbClient.GetDatabase(database);
                 var collection = db.GetCollection<BsonDocument>("Company");
-                var filter = Builders<BsonDocument>.Filter.Eq("CompanyId", id.ToString());
+                var filter = Builders<BsonDocument>.Filter.Eq("CompanyId", id);
                 var document = collection.Find(filter).FirstOrDefault();
                 Company company = CompanyFactory.Create(document);
                 return company;
@@ -104,7 +104,7 @@ namespace BachelorProjectBackend.Repository
             {
                 var db = dbClient.GetDatabase(database);
                 var collection = db.GetCollection<BsonDocument>("Product");
-                var filter = Builders<BsonDocument>.Filter.Eq("ProductId", id.ToString());
+                var filter = Builders<BsonDocument>.Filter.Eq("ProductId", id);
                 var document = collection.Find(filter).FirstOrDefault();
                 Product product = ProductFactory.Create(document);
                 return product;
